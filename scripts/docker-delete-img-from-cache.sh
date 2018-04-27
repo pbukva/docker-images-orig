@@ -5,10 +5,6 @@ cd ${0%/*}
 
 delete-image() {
     local IMG_TAG=$1
-    #if [[ "$(docker images -q $IMG_TAG 2> /dev/null)" == "" ]]
-    #then
-    #    docker rmi $IMG_TAG
-    #fi
     docker image inspect "$IMG_TAG" >/dev/null 2>&1 && docker rmi "$IMG_TAG"
 }
 
